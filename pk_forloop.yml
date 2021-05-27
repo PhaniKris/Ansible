@@ -1,0 +1,14 @@
+---
+ - name: using forloop
+   hosts: web
+   become: yes
+   
+   tasks:
+     - name: installations
+       apt:
+         name: "{{item}}"
+         state: latest
+       loop:
+         - tree
+         - ansible
+...
