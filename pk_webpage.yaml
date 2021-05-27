@@ -1,0 +1,11 @@
+---
+ - name: updating content in apache webpage  
+   hosts: test
+   become: yes
+
+   tasks:
+     - name: updating apache webpage
+       copy:
+         content: "this is updated by using ansible script"
+         dest: /var/www/html/index.html
+...

@@ -1,0 +1,22 @@
+---
+ - name: using arrays in ansible
+   hosts: test
+   become: yes
+   vars:
+     app: ['tree', 'apache2']
+     file: ['/home/ubuntu/1.txt', '/home/ubuntu/2.txt', '/home/ubuntu/3.txt', '/home/ubuntu/4.txt', '/home/ubuntu/5.txt']
+   
+   tasks:
+     - name: installing tree using array concept
+       apt: 
+         name: "{{item}}"
+         state: latest
+       loop: "{{app}}"
+
+     - name: creating text files
+       file:
+         name: "{{item}}"
+         state: touch 
+         mode: 0400
+       loop: "{{file}}"  
+... 

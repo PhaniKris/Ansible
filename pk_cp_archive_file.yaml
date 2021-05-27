@@ -1,0 +1,16 @@
+---
+ - name: copying file
+   become: true
+   hosts: all
+
+   tasks:
+       - name: copy file from local machine to remote machine
+         copy:
+           src: /opt/pk_apache2.yaml
+           dest: /home/ubuntu/abc
+           mode: u-wrx,g-rwx,o-rwx
+       - name: archiving file in remote machine
+         archive:
+           path: /home/ubuntu/abc/pk_apache2.yaml
+           dest: /home/ubuntu/cba/ar.tgz
+...

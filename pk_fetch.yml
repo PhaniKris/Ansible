@@ -1,0 +1,11 @@
+---
+ - name: copy file from remote machine to local machine
+   hosts: all
+
+   tasks:
+       - name: copy file from remote machine to local machine using FETCH
+         fetch:
+           src: /home/ubuntu/abc/1.txt
+           dest: /home/ubuntu
+           mode: u+rwx,g+rw,o+r
+...

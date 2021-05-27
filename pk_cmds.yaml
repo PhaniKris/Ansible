@@ -1,0 +1,13 @@
+---
+ - name: using linux commands instead of ansible modules
+   hosts: test
+   become: yes
+   
+   tasks:
+     - name: using linux commands
+       command: mv /home/ubuntu/1.txt /home/ubuntu/abc
+       ignore_errors: yes
+
+     - name: using linux commands using special chars
+       shell: ps aux > /home/ubuntu/abc/out.txt
+...

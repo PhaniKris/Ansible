@@ -1,0 +1,25 @@
+---
+ - name: test file
+   hosts: ec2
+
+   tasks:
+     - name: creating directory in remote machine
+       file:
+         path: /home/ubuntu/abc
+         state: directory
+
+     - name: creating file in remote machine using TOUCH
+       file:
+         path: /home/ubuntu/abc/abc.txt
+         state: touch
+
+     - name: removing file in remote machine
+       file:
+         path: /home/ubuntu/abc/abc.txt
+         state: absent
+
+     - name: remove directory in remote machine
+       file:
+         path: /home/ubuntu/abc
+         state: absent
+...

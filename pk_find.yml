@@ -1,0 +1,10 @@
+---
+ - name: learning module FIND
+   hosts: all
+
+   tasks:
+       - name: finding files in remote machine using FIND
+         find:
+           path: /home/ubuntu/abc
+           pattern: '*.txt'
+... 

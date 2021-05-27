@@ -1,0 +1,26 @@
+---
+ - name: installing apache2 in ubuntu
+   hosts: ec2
+   
+   tasks:
+       - name: install apache2
+         apt:
+            name: apache2
+            state: latest
+         become: yes
+       - name: creating page
+         copy:
+             content: "this created by ansible code"
+             dest: /var/www/html/index.html
+         become: yes
+       - name: restarting apache2
+         service:
+                name: apache2
+                state: restarted
+         become: yes
+       - name: uninstall apache2
+         apt:
+            name: apache2
+            state: absent
+         become: yes
+...
