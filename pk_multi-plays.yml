@@ -1,0 +1,30 @@
+---
+#THIS IS 1ST PLAYBOOK
+
+ - name: this is 1st playbook
+   hosts: web
+   become: yes
+
+   tasks:
+     - name: installing apache webserver
+       apt:
+         name: apache2
+         state: latest
+
+     - name: removing index.html
+       file:
+         path: /var/www/html/index.html
+         state: absent
+
+#THIS IS 2ND PLAYBOOK
+
+ - name: this is 2nd playbook
+   hosts: web
+   become: yes
+
+   tasks:
+     - name: creating index.html with content
+       copy:
+         content: "this is test page created using ansible script"
+         dest: /var/www/html/index.html
+... 
